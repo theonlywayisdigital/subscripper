@@ -1,9 +1,11 @@
 import { Pressable } from 'react-native'
 import { YStack, Text, View } from 'tamagui'
 import type { LucideIcon } from '@tamagui/lucide-icons'
+import { AnimatedIcon, type AnimatedIconName } from '../../ui'
 
 interface QuickActionButtonProps {
-  icon: LucideIcon
+  icon?: LucideIcon
+  animatedIcon?: AnimatedIconName
   label: string
   onPress?: () => void
   variant?: 'default' | 'primary' | 'accent'
@@ -11,6 +13,7 @@ interface QuickActionButtonProps {
 
 export function QuickActionButton({
   icon: Icon,
+  animatedIcon,
   label,
   onPress,
   variant = 'default',
@@ -41,7 +44,11 @@ export function QuickActionButton({
           alignItems="center"
           marginBottom="$sm"
         >
-          <Icon size={22} color={iconColor} />
+          {animatedIcon ? (
+            <AnimatedIcon name={animatedIcon} size={28} loop={false} />
+          ) : Icon ? (
+            <Icon size={22} color={iconColor} />
+          ) : null}
         </View>
         <Text color={textColor} fontSize={13} fontWeight="500" textAlign="center">
           {label}

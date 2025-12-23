@@ -1,8 +1,8 @@
 import { YStack, XStack, Text, View } from 'tamagui'
-import type { LucideIcon } from '@tamagui/lucide-icons'
+import { AnimatedIcon, type AnimatedIconName } from '../../ui'
 
 interface StatCardProps {
-  icon: LucideIcon
+  icon: AnimatedIconName
   label: string
   value: string | number
   subtitle?: string
@@ -11,17 +11,15 @@ interface StatCardProps {
     isPositive: boolean
   }
   iconBgColor?: string
-  iconColor?: string
 }
 
 export function StatCard({
-  icon: Icon,
+  icon,
   label,
   value,
   subtitle,
   trend,
   iconBgColor = '#D4C8E8',
-  iconColor = '#1A3A35',
 }: StatCardProps) {
   return (
     <YStack
@@ -35,14 +33,14 @@ export function StatCard({
     >
       <XStack justifyContent="space-between" alignItems="flex-start" marginBottom="$sm">
         <View
-          width={40}
-          height={40}
+          width={44}
+          height={44}
           borderRadius={12}
           backgroundColor={iconBgColor}
           justifyContent="center"
           alignItems="center"
         >
-          <Icon size={20} color={iconColor} />
+          <AnimatedIcon name={icon} size={28} loop={false} />
         </View>
         {trend && (
           <XStack

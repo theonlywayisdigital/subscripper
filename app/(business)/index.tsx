@@ -7,15 +7,7 @@ import {
   Clock,
   CheckCircle,
   XCircle,
-  Users,
-  PoundSterling,
-  QrCode,
-  Heart,
   Plus,
-  CreditCard,
-  Store,
-  Package,
-  Megaphone,
 } from '@tamagui/lucide-icons'
 import { useAuthStore } from '../../stores/auth'
 import { useBusinessStore } from '../../stores/business'
@@ -155,21 +147,21 @@ export default function BusinessDashboardScreen() {
   // Calculate setup progress
   const setupSteps = [
     {
-      icon: Store,
+      icon: 'checkbox' as const,
       label: 'Business profile',
       description: 'Your business details',
       completed: true,
       onPress: () => router.push('/(business)/settings'),
     },
     {
-      icon: CreditCard,
+      icon: 'credit-card' as const,
       label: 'Connect Stripe',
       description: 'Accept payments',
       completed: business.stripeOnboardingComplete,
       onPress: () => router.push('/(business)/stripe-onboarding'),
     },
     {
-      icon: Package,
+      icon: 'price-tag' as const,
       label: 'Create a subscription',
       description: 'Your first product',
       completed: false, // TODO: Check if has products
@@ -233,14 +225,14 @@ export default function BusinessDashboardScreen() {
             </Text>
             <XStack gap="$sm">
               <StatCard
-                icon={Users}
+                icon="customers"
                 label="Subscribers"
                 value={0}
                 subtitle="Active"
                 iconBgColor="#D4C8E8"
               />
               <StatCard
-                icon={PoundSterling}
+                icon="accounting"
                 label="Revenue"
                 value="£0"
                 subtitle="This month"
@@ -249,14 +241,14 @@ export default function BusinessDashboardScreen() {
             </XStack>
             <XStack gap="$sm">
               <StatCard
-                icon={QrCode}
+                icon="qr-code"
                 label="Redemptions"
                 value={0}
                 subtitle="Today"
                 iconBgColor="#F0F0F0"
               />
               <StatCard
-                icon={Heart}
+                icon="heart"
                 label="Loyalty stamps"
                 value={0}
                 subtitle="This week"
@@ -278,12 +270,12 @@ export default function BusinessDashboardScreen() {
                 onPress={() => router.push('/(business)/subscriptions')}
               />
               <QuickActionButton
-                icon={QrCode}
+                animatedIcon="qr-code"
                 label="Scan QR"
                 onPress={() => {/* TODO: QR Scanner */}}
               />
               <QuickActionButton
-                icon={Megaphone}
+                animatedIcon="marketing"
                 label="Promote"
                 onPress={() => {/* TODO: Promotions */}}
               />

@@ -1,5 +1,20 @@
 import { Tabs } from 'expo-router'
-import { LayoutDashboard, CreditCard, Heart, Settings } from '@tamagui/lucide-icons'
+import { View } from 'react-native'
+import { AnimatedIcon, type AnimatedIconName } from '../../components/ui'
+
+function TabIcon({ name, focused }: { name: AnimatedIconName; focused: boolean }) {
+  return (
+    <View style={{ opacity: focused ? 1 : 0.5 }}>
+      <AnimatedIcon
+        name={name}
+        size={28}
+        autoPlay={focused}
+        loop={focused}
+        speed={0.8}
+      />
+    </View>
+  )
+}
 
 export default function BusinessLayout() {
   return (
@@ -26,28 +41,28 @@ export default function BusinessLayout() {
         name="index"
         options={{
           title: 'Dashboard',
-          tabBarIcon: ({ color, size }) => <LayoutDashboard color={color} size={size} />,
+          tabBarIcon: ({ focused }) => <TabIcon name="dashboard" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="subscriptions"
         options={{
           title: 'Subscriptions',
-          tabBarIcon: ({ color, size }) => <CreditCard color={color} size={size} />,
+          tabBarIcon: ({ focused }) => <TabIcon name="credit-card" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="loyalty"
         options={{
           title: 'Loyalty',
-          tabBarIcon: ({ color, size }) => <Heart color={color} size={size} />,
+          tabBarIcon: ({ focused }) => <TabIcon name="heart" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color, size }) => <Settings color={color} size={size} />,
+          tabBarIcon: ({ focused }) => <TabIcon name="settings" focused={focused} />,
         }}
       />
       {/* Hidden screens - accessed via Settings */}

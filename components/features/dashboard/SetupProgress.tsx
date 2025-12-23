@@ -1,10 +1,10 @@
 import { Pressable } from 'react-native'
 import { YStack, XStack, Text, View } from 'tamagui'
 import { Check, ChevronRight } from '@tamagui/lucide-icons'
-import type { LucideIcon } from '@tamagui/lucide-icons'
+import { AnimatedIcon, type AnimatedIconName } from '../../ui'
 
 interface SetupStep {
-  icon: LucideIcon
+  icon: AnimatedIconName
   label: string
   description: string
   completed: boolean
@@ -61,9 +61,9 @@ export function SetupProgress({ title, steps, completedCount, totalCount }: Setu
               opacity={step.completed ? 0.8 : 1}
             >
               <View
-                width={36}
-                height={36}
-                borderRadius={18}
+                width={40}
+                height={40}
+                borderRadius={20}
                 backgroundColor={step.completed ? '#C4E538' : '#E8E8E8'}
                 justifyContent="center"
                 alignItems="center"
@@ -71,7 +71,7 @@ export function SetupProgress({ title, steps, completedCount, totalCount }: Setu
                 {step.completed ? (
                   <Check size={18} color="#1A3A35" />
                 ) : (
-                  <step.icon size={18} color="#666666" />
+                  <AnimatedIcon name={step.icon} size={26} loop={false} />
                 )}
               </View>
               <YStack flex={1}>

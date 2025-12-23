@@ -1,6 +1,7 @@
 // Base UI Components
 // All custom Subscripper UI components
 
+export { AnimatedIcon, type AnimatedIconName } from './AnimatedIcon'
 export { Button } from './Button'
 export { Card, type CardProps } from './Card'
 export { Input } from './Input'
